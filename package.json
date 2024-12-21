@@ -1,0 +1,15 @@
+{
+  "name": "appwrite-server-side",
+  "version": "1.0.0",
+  "description": "Appwrite server side for occasionton",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ziyardeen Alhassan",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "node-appwrite": "^14.1.0"
+  }
+}
