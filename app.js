@@ -8,5 +8,5 @@ const events = require("./events.json");
 
 // createDatabase();
 // createEventsCollection();
-// seed(events);
 // createBucket();
+// seed(events);

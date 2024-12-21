@@ -40,7 +40,16 @@ async function createDatabase() {
 // Creating Events Storage Bucket
 async function createBucket() {
   try {
-    await storage.deleteBucket("EventsImageBucketId");
+    try {
+      await storage.deleteBucket("EventsImageBucketId");
+      console.log("Existing Bucket Deleted successully.");
+    } catch (error) {
+      if (error.code === 404) {
+        console.log("Bucket Does not exist, Skipping ...");
+      } else {
+        throw error;
+      }
+    }
     const result = await storage.createBucket(
       "EventsImageBucketId",
       "EventsImageBucket",
@@ -80,10 +89,16 @@ async function createEventsCollection() {
     { key: "endTime", type: "string", size: 100, required: false },
   ];
   try {
-    const result1 = await databases.deleteCollection(
-      "occasiontonDb",
-      "eventsColId"
-    );
+    try {
+      await databases.deleteCollection("occasiontonDb", "eventsColId");
+      console.log("Existing Collection Deleted Successfully.");
+    } catch (error) {
+      if (error.code === 404) {
+        console.log("Collection does not exist, skipping delete.");
+      } else {
+        throw error;
+      }
+    }
     const result = await databases.createCollection(
       "occasiontonDb",
       "eventsColId",
